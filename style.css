@@ -21,7 +21,11 @@
     --clr-acc-four: #ad0000;
     --clr-acc-fif: #e03333;
     --clr-text-main: #67696a;
-    --clr-text-pri: #36454F;  
+    --clr-text-pri: #36454F;
+    
+    --speed-fast: 0.5s;
+    --speed-normal: 1s;
+    --speed-slow: 1.5;
     
     --shadow-color: #33cbb8;    
     --main-ff: 'Poppins', sans-serif;
@@ -85,12 +89,51 @@ img {
     to {
         opacity: 1;
         transform: scale(1);
-
     }
 }
     /* animation: scaleUp 1s ease-in-out;
     transform-origin: center center; */
 
+
+    @keyframes fromTop {
+        from {
+            transform: translateY(-100vh);
+        }
+    
+        to {
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes fromBottom {
+        from {
+            transform: translateY(100vh);
+        }
+    
+        to {
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes fromLeft {
+        from {
+            transform: translateX(-100vw);
+        }
+    
+        to {
+            transform: translateX(0);
+        }
+    }
+    
+    @keyframes fromRight {
+        from {
+            transform: translateX(100vw);
+        }
+    
+        to {
+            transform: translateX(0);
+        }
+    }
 /*===== BUTTONS =====*/
 
 .btn {
@@ -128,7 +171,6 @@ body {
 }
 
 .container {
-    /* position: absolute; */
     min-width: 300px;
     width: 90%;
     max-width: 30rem;
@@ -147,6 +189,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    overflow: hidden;
 }
 
 img {
@@ -156,11 +199,18 @@ img {
     object-position: top;
     border-radius: 20px;
     margin-top: 1rem;
+    animation: 1s ease-in-out .5s backwards fromTop;
 }
 
 h3 {
     margin-bottom: .5rem;
+    animation: 1s ease-in-out .5s backwards fromLeft;
 }
+
+.text p {
+    animation: 1s ease-in-out .7s backwards fromLeft;
+}
+
 .btns {
     display: flex;
     flex-wrap: wrap;
@@ -177,6 +227,7 @@ h3 {
     background-size: 300% 100%;
     background-image: linear-gradient(to right, var(--clr-acc-pri), var(--clr-acc-sec), #fa7199, #e85a19);
     border-radius: 50px;
+    animation: 1s ease-in-out .9s backwards fromLeft;
     moz-transition: all .4s ease-in-out;
     -o-transition: all .4s ease-in-out;
     -webkit-transition: all .4s ease-in-out;
@@ -195,6 +246,7 @@ h3 {
 
 .send {
     background: var(--clr-bg-pri);
+    animation: 1s ease-in-out 1.1s backwards fromBottom;
 }
 
 .wrapper {
@@ -313,16 +365,6 @@ h3 {
       transform: rotate(0deg);
     }
   }
-
-/* @keyframes move {
-    0% {
-        background-position: 0% center;
-    }
-
-    100% {
-        background-position: -200% center;
-    }
-} */
 
 @media screen and (max-width: 600px){
     .container {
